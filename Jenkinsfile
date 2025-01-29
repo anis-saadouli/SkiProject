@@ -28,8 +28,11 @@ pipeline {
                         ${SONAR_SCANNER_HOME}/bin/sonar-scanner \
                         -Dsonar.projectKey=your-project-key \
                         -Dsonar.projectName=YourProjectName \
-                        -Dsonar.sources=src \
+                        -Dsonar.sources=src/main/java \
+                        -Dsonar.tests=src/test/java \
                         -Dsonar.java.binaries=target/classes \
+                        -Dsonar.junit.reportPaths=target/surefire-reports \
+                        -Dsonar.jacoco.reportPaths=target/site/jacoco/jacoco.xml \
                         -Dsonar.host.url=http://192.168.56.10:9000 \
                         -Dsonar.login=sqa_894771b88ff5c7454b6569ed36cc7953171c4fed
                     """
