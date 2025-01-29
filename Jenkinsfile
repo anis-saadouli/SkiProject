@@ -29,8 +29,7 @@ pipeline {
                         -Dsonar.projectKey=your-project-key \
                         -Dsonar.projectName=YourProjectName \
                         -Dsonar.sources=src \
-                            -Dsonar.java.binaries=target/classes \  // Add this line
-
+                        -Dsonar.java.binaries=target/classes \
                         -Dsonar.host.url=http://192.168.56.10:9000 \
                         -Dsonar.login=sqa_894771b88ff5c7454b6569ed36cc7953171c4fed
                     """
