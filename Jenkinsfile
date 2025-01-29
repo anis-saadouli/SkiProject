@@ -34,7 +34,7 @@ pipeline {
                         -Dsonar.junit.reportPaths=target/surefire-reports \
                         -Dsonar.jacoco.reportPaths=target/site/jacoco/jacoco.xml \
                         -Dsonar.host.url=http://192.168.56.10:9000 \
-                        -Dsonar.login=sqa_894771b88ff5c7454b6569ed36cc7953171c4fed
+                        -Dsonar.login=sqa_3d07d0b9ee32ef3cdad5d3552332bcd0dddbfba8
                     """
                 }
             }
