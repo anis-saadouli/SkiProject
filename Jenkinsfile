@@ -48,7 +48,7 @@ pipeline {
         }
 
         // Stage 5: Build and Deploy with Docker Compose
-        stage('Docker Compose') {
+        stage('Build and Deploy') {
             steps {
                 script {
                     // Build Docker images
@@ -79,7 +79,7 @@ pipeline {
         }
 
         // Stage 7: Start Containers with Docker Compose
-        stage('Docker Compose') {
+        stage('Start Containers') {
             steps {
                 script {
                     sh 'docker-compose up -d'
