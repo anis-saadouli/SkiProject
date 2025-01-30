@@ -6,21 +6,21 @@ pipeline {
     }
 
     stages {
-        // Stage 1: Checkout Code
+        // Stage 1: Récupération du projet depuis GitHub/GitLab
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/anis-saadouli/SkiProject'
             }
         }
 
-        // Stage 2: Build and Test
+        // Stage 2: Exécution des tests unitaires avec l'utilisation de Mockito et JUnit
         stage('Build and Test') {
             steps {
                 sh 'mvn clean install' // For Maven projects
             }
         }
 
-        // Stage 3: SonarQube Analysis
+        // Stage 3: Évaluation de la qualité du code grâce à l'outil SonarQube
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQube') {
@@ -40,27 +40,23 @@ pipeline {
             }
         }
 
-        // Stage 4: Deploy to Nexus
+        // Stage 4: Dépôt du livrable sur Nexus
         stage('Deploy to Nexus') {
             steps {
                 sh 'mvn deploy'
             }
         }
 
-        // Stage 5: Build and Deploy with Docker Compose
-        stage('Build and Deploy') {
+        // Stage 5: Construction de l'image Docker (pour la partie Spring) à partir du fichier Dockerfile
+        stage('Build Docker Image') {
             steps {
                 script {
-                    // Build Docker images
                     sh 'docker-compose build'
-
-                    // Start containers
-                    sh 'docker-compose up -d'
                 }
             }
         }
 
-        // Stage 6: Push Docker Images
+        // Stage 6: Publication de l'image créée sur Docker Hub ou Nexus
         stage('Push Docker Images') {
             steps {
                 script {
@@ -78,8 +74,8 @@ pipeline {
             }
         }
 
-        // Stage 7: Start Containers with Docker Compose
-        stage('Start Containers') {
+        // Stage 7: Démarrage simultané de l'image contenant le livrable Spring et de l'image MySQL en utilisant docker-compose
+        stage('Start Containers with Docker Compose') {
             steps {
                 script {
                     sh 'docker-compose up -d'
