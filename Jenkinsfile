@@ -66,7 +66,7 @@ pipeline {
                 script {
                     withCredentials([string(credentialsId: 'docker-hub-token', variable: 'DOCKER_HUB_TOKEN')]) {
                         // Log in to Docker Hub using the access token
-                        sh 'docker login -u your-anisxo -p $DOCKER_HUB_TOKEN'
+                        sh 'echo $DOCKER_HUB_TOKEN | docker login -u anisxo --password-stdin'
 
                         // Tag the Docker image
                         sh 'docker tag station-ski-app anisxo/station-ski-app'
