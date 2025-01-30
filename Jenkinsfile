@@ -73,7 +73,7 @@ pipeline {
         }
     }
 
-    results {
+    resultss {
         success {
             echo 'Pipeline completed successfully!'
         }
