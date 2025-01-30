@@ -40,14 +40,12 @@ pipeline {
             }
         }
 
+        // Stage 4: Deploy to Nexus
         stage('Deploy to Nexus') {
-                    steps {
-                        sh 'mvn deploy'
-                    }
-                }
-
-
-
+            steps {
+                sh 'mvn deploy'
+            }
+        }
 
         // Stage 5: Build and Deploy with Docker Compose
         stage('Docker Compose') {
@@ -61,6 +59,7 @@ pipeline {
                 }
             }
         }
+    }
 
     post {
         success {
