@@ -59,9 +59,21 @@ pipeline {
                 }
             }
         }
+
+        // Stage 6: Push Docker Images to Docker Hub
+        stage('Push Docker Images') {
+            steps {
+                script {
+                    sh 'docker login -u anisxo -p dckr_pat_sRRvdJM73D4FHJSYXzdZEaAWhxQ'
+                    // Tag the Docker image
+                    sh 'docker tag station-ski-app anisxo/station-ski-app'
+                    sh 'docker push anisxo/station-ski-app'
+                }
+            }
+        }
     }
 
-    post {
+    results {
         success {
             echo 'Pipeline completed successfully!'
         }
