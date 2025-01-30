@@ -48,6 +48,20 @@ pipeline {
 
     }
 
+
+        // Stage 5: Build and Deploy with Docker Compose
+        stage('Docker Compose') {
+            steps {
+                script {
+                    // Build Docker images
+                    sh 'docker-compose build'
+
+                    // Start containers
+                    sh 'docker-compose up -d'
+                }
+            }
+        }
+
     post {
         success {
             echo 'Pipeline completed successfully!'
