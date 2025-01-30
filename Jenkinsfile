@@ -60,20 +60,23 @@ pipeline {
             }
         }
 
-        // Stage 6: Push Docker Images to Docker Hub
-        stage('Push Docker Images') {
-            steps {
-                script {
-                    sh 'docker login -u anisxo -p dckr_pat_sRRvdJM73D4FHJSYXzdZEaAWhxQ'
-                    // Tag the Docker image
-                    sh 'docker tag station-ski-app anisxo/station-ski-app'
-                    sh 'docker push anisxo/station-ski-app'
-                }
+stage('Push Docker Images') {
+    steps {
+        script {
+            withCredentials([string(credentialsId: 'docker-hub-token', variable: 'DOCKER_HUB_TOKEN')]) {
+                // Log in to Docker Hub using the access token
+                sh 'docker login -u your-anisxo -p $DOCKER_HUB_TOKEN'
+
+                // Tag the Docker image
+                sh 'docker tag station-ski-app anisxo/station-ski-app'
+
+                // Push the Docker image to Docker Hub
+                sh 'docker push anisxo/station-ski-app'
             }
         }
     }
-
-    resultss {
+}
+    results {
         success {
             echo 'Pipeline completed successfully!'
         }
