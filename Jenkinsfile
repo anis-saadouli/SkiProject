@@ -76,7 +76,7 @@ stage('Push Docker Images') {
         }
     }
 }
-    results {
+    resultss{
         success {
             echo 'Pipeline completed successfully!'
         }
