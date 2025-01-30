@@ -77,6 +77,15 @@ pipeline {
                 }
             }
         }
+
+        // Stage 7: Start Containers with Docker Compose
+        stage('Docker Compose') {
+            steps {
+                script {
+                    sh 'docker-compose up -d'
+                }
+            }
+        }
     }
 
     post {
