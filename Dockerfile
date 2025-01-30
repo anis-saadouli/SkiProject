@@ -5,7 +5,7 @@ FROM openjdk:11-jre-slim
 WORKDIR /app
 
 # Copy the JAR file into the container
-COPYC target/stationSki-1.0.jar stationSki-1.0.jar
+COPY target/stationSki-1.0.jar stationSki-1.0.jar
 
 # Expose the port your app runs on
 EXPOSE 8080
