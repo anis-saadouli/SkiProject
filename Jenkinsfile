@@ -82,6 +82,16 @@ pipeline {
                 }
             }
         }
+        // Stage 8: Redémarrer Prometheus et Grafana
+        stage('Restart Monitoring Services') {
+            steps {
+                script {
+                    sh 'docker restart prometheus'
+                    sh 'docker restart grafana'
+                }
+            }
+        }
+
     }
 
     post {
