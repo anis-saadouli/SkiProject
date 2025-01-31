@@ -8,7 +8,7 @@ WORKDIR /app
 COPY target/stationSki-1.0.jar stationSki-1.0.jar
 
 # Expose the port your app runs on
-EXPOSE 8080
+EXPOSE 8087
 
 # Run the application
 ENTRYPOINT ["java", "-jar", "stationSki-1.0.jar"]
