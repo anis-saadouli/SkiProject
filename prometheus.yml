@@ -2,9 +2,9 @@ global:
   scrape_interval: 15s  # How frequently Prometheus scrapes metrics
 
 scrape_configs:
-  - job_name: 'spring-boot-app'
+  - job_name: 'jenkins-pipeline'
     static_configs:
-      - targets: ['app:8087']  # Using the service name 'app' and port 8087
+      - targets: ['http://192.168.56.10:8080/metrics']  # Replace with Jenkins URL exposing Prometheus metrics
   - job_name: 'prometheus'
     static_configs:
-      - targets: ['prometheus:9090']  # Use service name 'prometheus' within Docker network
+      - targets: ['prometheus:9090']  # Prometheus service in Docker network

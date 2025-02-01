@@ -39,6 +39,12 @@ services:
     ports:
       - "9090:9090"
 
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    ports:
+      - "8080:8080"
+
   grafana:
     image: grafana/grafana
     container_name: grafana
