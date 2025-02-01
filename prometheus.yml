@@ -1,0 +1,10 @@
+global:
+  scrape_interval: 15s  # How frequently Prometheus scrapes metrics
+
+scrape_configs:
+  - job_name: 'spring-boot-app'
+    static_configs:
+      - targets: ['app:8087']  # Using the service name 'app' and port 8087
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['prometheus:9090']  # Use service name 'prometheus' within Docker network
