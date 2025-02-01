@@ -30,31 +30,9 @@ services:
       timeout: 5s
       retries: 5
 
-  prometheus:
-    image: prom/prometheus
-    container_name: prometheus
-    restart: always
-    volumes:
-      - ./prometheus-config/prometheus.yml:/etc/prometheus/prometheus.yml  # Mounting your custom prometheus.yml
-    ports:
-      - "9090:9090"
 
-  jenkins:
-    image: jenkins/jenkins:lts
-    container_name: jenkins
-    ports:
-      - "8080:8080"
 
-  grafana:
-    image: grafana/grafana
-    container_name: grafana
-    restart: always
-    ports:
-      - "3000:3000"
-    environment:
-      GF_SECURITY_ADMIN_PASSWORD: 'admin'  # Set your Grafana admin password here
-    depends_on:
-      - prometheus
+
 
 # Define volumes at the top level
 volumes:
